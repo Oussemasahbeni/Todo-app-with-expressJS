@@ -1,0 +1,39 @@
+<%- include("partials/header.ejs") %>
+
+
+    <h1>Todo List</h1>
+
+    <form action="/submit" method="post">
+        <div class="todo-input">
+            <input class="input-add name-input" type="text" name="todo-task" placeholder="Add your task">
+            <!-- <input type="date" class="js-date due-date-input"> -->
+            <!-- <input type="submit"> -->
+            <button type="submit" class="btn-add "> Add</button>
+        </div>
+    </form>
+
+
+
+    <div class=" pr todo-grid">
+        <% if(locals.taskArray){ %>
+            <% taskArray.forEach((element,index)=> { %>
+                <div class="task">
+
+                    <form action="/delete" method="post">
+                        <button type="submit" class="btn-delete "> Delete</button>
+                    </form>
+                    <input type="checkbox" class="checkbox">
+                    <h4>
+                        <%= element %>
+                    </h4>
+
+                </div>
+
+                <% })}; %>
+    </div>
+
+
+
+
+
+    <%- include("partials/footer.ejs") %>
