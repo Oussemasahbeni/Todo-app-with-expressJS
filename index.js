@@ -6,7 +6,7 @@ const port = 3000;
 
 let tasks = [];
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
   res.render("index.ejs", {
@@ -15,6 +15,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/submit", (req, res) => {
+  console.log(req.body);
   tasks.push(req.body["todo-task"]);
   req.body["todo-task"] = "";
   res.redirect("/");
